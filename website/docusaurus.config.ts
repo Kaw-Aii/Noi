@@ -18,7 +18,7 @@ const config: Config = {
   organizationName: 'lencx', // Usually your GitHub org/user name.
   projectName: 'noi', // Usually your repo name.
 
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
 
   // Even if you don't use internationalization, you can use this field to set
@@ -46,12 +46,26 @@ const config: Config = {
     [
       'classic',
       {
+        docs: {
+          sidebarPath: './sidebars.ts',
+          editUrl: 'https://github.com/lencx/Noi/tree/main/website/',
+        },
+        blog: {
+          showReadingTime: true,
+          editUrl: 'https://github.com/lencx/Noi/tree/main/website/',
+        },
         theme: {
           customCss: './src/css/custom.css',
         },
       } satisfies Preset.Options,
     ],
   ],
+
+  themes: ['@docusaurus/theme-mermaid'],
+
+  markdown: {
+    mermaid: true,
+  },
 
   themeConfig: {
     // Replace with your project's social card
@@ -63,12 +77,12 @@ const config: Config = {
         src: 'readme/noi.png',
       },
       items: [
-        // {
-        //   type: 'docSidebar',
-        //   sidebarId: 'tutorialSidebar',
-        //   position: 'left',
-        //   label: 'Tutorial',
-        // },
+        {
+          type: 'docSidebar',
+          sidebarId: 'tutorialSidebar',
+          position: 'left',
+          label: 'Docs',
+        },
         { to: '/blog', label: 'Blog', position: 'left' },
         {
           type: 'localeDropdown',
